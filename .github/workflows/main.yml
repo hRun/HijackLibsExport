@@ -30,7 +30,6 @@ jobs:
     - name: Clone https://github.com/wietze/HijackLibs
       run: |
         git clone https://github.com/wietze/HijackLibs.git
-        mkdir -p upload
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Parse and transform HijackLibs
@@ -38,12 +37,8 @@ jobs:
       shell: bash
     - name: Push to "download" branch
       run: |
-        cd upload
-        git init
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor }}@users.noreply.github.com"
         git checkout -b download
-        git add .
+        git add msft_dlls.csv othr_dlls.csv
         git commit -m "weekly update"
         git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
         git push -f origin download
@@ -55,8 +50,8 @@ jobs:
         tag_name: release
         body: Wietze Beukema's HijackLibs CSV export for SIEM lookups
         files: |
-          upload/msft_dlls.csv
-          upload/othr_dlls.csv
+          msft_dlls.csv
+          othr_dlls.csv
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.2.0
       with:
