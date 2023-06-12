@@ -27,13 +27,12 @@ jobs:
     - name: Install Dependencies
       run: pip install pyyaml
       shell: bash
-    - name: Clone https://github.com/wietze/HijackLibs
-      run: |
-        git clone https://github.com/wietze/HijackLibs.git
     - name: Check out repository code
       uses: actions/checkout@v2
-    - name: Parse and transform HijackLibs
-      run: python src/dll_parser.py
+    - name: Clone https://github.com/wietze/HijackLibs, parse and transform HijackLibs
+      run: |
+        git clone https://github.com/wietze/HijackLibs.git
+        python src/dll_parser.py
       shell: bash
     - name: Push to "download" branch
       run: |
@@ -41,6 +40,7 @@ jobs:
         git config user.email "${{ github.actor }}@users.noreply.github.com"
         git checkout -b download
         git add msft_dlls.csv othr_dlls.csv
+        git rm -r src .github LICENSE README.md
         git commit -m "weekly update"
         git push -f origin download
     - name: Upload to Releases
