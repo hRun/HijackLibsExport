@@ -37,7 +37,7 @@ def parse_sources(src_dir: str, dst_file: str) -> bool:
                         with open(dst_file, 'a') as dst:
                             for exe in spec['VulnerableExecutables']: # multiple exes can use the same dll insecurely
                                 dst.write(
-                                    '"{}", "{}", "{}", "{}", "{}", "{}", "{}"\n'.format(
+                                    '"{}","{}","{}","{}","{}","{}","{}"\n'.format(
                                         spec['Name'], 
                                         os.path.join(path_mapping[location.split('\\', 1)[0]], location.split('\\', 1)[1], spec['Name']).replace('/', '\\') if len(location.split('\\', 1)) > 1 else os.path.join(path_mapping[location.split('\\', 1)[0]], spec['Name']).replace('/', '\\'), 
                                         os.path.join(location, spec['Name']).replace('/', '\\'), 
