@@ -5,8 +5,8 @@ import yaml
 
 src_msft = os.path.join('HijackLibs', 'yml', 'microsoft')
 src_othr = os.path.join('HijackLibs', 'yml', '3rd_party')
-dst_msft = os.path.join('upload/msft_dlls.csv')
-dst_othr = os.path.join('upload/othr_dlls.csv')
+dst_msft = os.path.join('msft_dlls.csv')
+dst_othr = os.path.join('othr_dlls.csv')
 
 path_mapping = {
     '%SYSTEM32%': 'C:\\Windows\\System32', 
