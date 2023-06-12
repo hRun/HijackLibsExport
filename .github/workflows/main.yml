@@ -32,7 +32,7 @@ jobs:
         git clone https://github.com/wietze/HijackLibs.git
         mkdir -p upload
     - name: Parse and transform HijackLibs
-      run: python src/parse_dlls.py
+      run: python src/dll_parser.py
       shell: bash
     - name: Push to "download" branch
       run: |
