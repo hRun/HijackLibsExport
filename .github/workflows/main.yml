@@ -31,6 +31,8 @@ jobs:
       run: |
         git clone https://github.com/wietze/HijackLibs.git
         mkdir -p upload
+    - name: Check out repository code
+      uses: actions/checkout@v2
     - name: Parse and transform HijackLibs
       run: python src/dll_parser.py
       shell: bash
