@@ -42,7 +42,6 @@ jobs:
         git checkout -b download
         git add msft_dlls.csv othr_dlls.csv
         git commit -m "weekly update"
-        git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
         git push -f origin download
     - name: Upload to Releases
       uses: softprops/action-gh-release@v1
