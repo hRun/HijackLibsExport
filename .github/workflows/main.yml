@@ -37,6 +37,8 @@ jobs:
       shell: bash
     - name: Push to "download" branch
       run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
         git checkout -b download
         git add msft_dlls.csv othr_dlls.csv
         git commit -m "weekly update"
