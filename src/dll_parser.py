@@ -39,10 +39,10 @@ def parse_sources(src_dir: str, dst_file: str) -> bool:
                                 dst.write(
                                     '"{}", "{}", "{}", "{}", "{}", "{}", "{}"\n'.format(
                                         spec['Name'], 
-                                        os.path.join(path_mapping[location.split('\\', 1)[0]], location.split('\\', 1)[1], spec['Name']) if len(location.split('\\', 1)) > 1 else os.path.join(path_mapping[location.split('\\', 1)[0]], spec['Name']), 
-                                        os.path.join(location, spec['Name']), 
+                                        os.path.join(path_mapping[location.split('\\', 1)[0]], location.split('\\', 1)[1], spec['Name']).replace('/', '\\') if len(location.split('\\', 1)) > 1 else os.path.join(path_mapping[location.split('\\', 1)[0]], spec['Name']).replace('/', '\\'), 
+                                        os.path.join(location, spec['Name']).replace('/', '\\'), 
                                         exe['Path'].split('\\')[-1] if '\\' in exe['Path'] else exe['Path'], 
-                                        os.path.join(path_mapping[exe['Path'].split('\\', 1)[0]], exe['Path'].split('\\', 1)[1]) if '\\' in exe['Path'] else '', 
+                                        os.path.join(path_mapping[exe['Path'].split('\\', 1)[0]], exe['Path'].split('\\', 1)[1]).replace('/', '\\') if '\\' in exe['Path'] else '', 
                                         exe['Path'] if '\\' in exe['Path'] else '', 
                                         exe['Type']
                                     )
